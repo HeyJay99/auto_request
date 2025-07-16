@@ -1,0 +1,15 @@
+# 파이썬 캐시
+__pycache__/
+*.py[cod]
+
+# VSCode 설정
+.vscode/
+
+# 엑셀, 로그 등 민감/무거운 파일
+*.xlsx
+*.xls
+*.log
+
+# 기타 IDE 설정파일
+*.idea/
+*.DS_Store
