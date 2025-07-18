@@ -76,7 +76,7 @@ def run_macro():
     keyboard.add_hotkey('q', stop_macro)
 
     #데이터 프레임 불러오기, 시트와 읽어올 행 설정
-    df = pd.read_excel(selected_file_path, sheet_name = selected_option.get(), skiprows=2)
+    df = pd.read_excel(selected_file_path, sheet_name = "Sheet2", skiprows=2)
 
     #매크로 반복문 설정
     for index, row in df.iterrows():
@@ -88,6 +88,13 @@ def run_macro():
 
         #아이템 코드 읽어오기 + 공백제거
         item_code = str(row['일흥품번']).strip()
+
+        # 비고란에서 키워드 포함 여부 확인
+        remark = str(row.get('비고', '')).strip()  # '비고' 열이 없으면 기본값은 ''
+        keywords = [selected_option.get()]
+
+        if not any(k in remark for k in keywords):
+            continue
 
         pyautogui.moveTo(x=368, y=619)
         pyautogui.click()
